@@ -82,7 +82,7 @@ jobs:
         with:
           name: vm-images
           path: ./vm/build/output
-          retention-days: 1
+          retention-days: 14
       - name: Collect shared artifacts
         uses: actions/upload-artifact@v3
         with:
