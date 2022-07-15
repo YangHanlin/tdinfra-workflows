@@ -55,7 +55,8 @@ jobs:
           # Install dependencies
           brew install \
             qemu \
-            cdrtools
+            cdrtools \
+            coreutils
 
           # Install mkpasswd using RubyGems
           gem install mkpasswd
@@ -63,14 +64,15 @@ jobs:
           # Install cloud-localds manually
           wget -O /usr/local/bin/cloud-localds https://raw.githubusercontent.com/canonical/cloud-utils/main/bin/cloud-localds
           chmod +x /usr/local/bin/cloud-localds
+
+          # Tweaks to make cloud-localds work in macOS environment
+          ln -s "$(which mkisofs)" /usr/local/bin/genisoimage
       - name: Build VM images
         run: |
           set -e
 
           # Fixes to make cloud-localds work in macOS environment
           export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
-          echo -e '#!/usr/bin/env bash\nmkisofs "$@"' > /usr/local/bin/genisoimage
-          chmod +x /usr/local/bin/genisoimage
 
           ./vm/build/build.sh
         env:
