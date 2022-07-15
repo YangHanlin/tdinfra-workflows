@@ -71,7 +71,7 @@ jobs:
         run: |
           set -e
 
-          # Fixes to make cloud-localds work in macOS environment
+          # Tweaks to make cloud-localds work in macOS environment
           export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 
           ./vm/build/build.sh
