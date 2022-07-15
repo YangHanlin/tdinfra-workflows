@@ -67,9 +67,6 @@ jobs:
 
           # Tweaks to make cloud-localds work in macOS environment
           ln -s "$(which mkisofs)" /usr/local/bin/genisoimage
-
-          # Tweaks to make sha256sum available
-          ln -s "$(which gsha256sum)" /usr/local/bin/sha256sum
       - name: Build VM images
         run: |
           set -e
