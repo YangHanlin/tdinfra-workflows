@@ -56,7 +56,8 @@ jobs:
           brew install \
             qemu \
             cdrtools \
-            coreutils
+            coreutils \
+            gomplate
 
           # Install mkpasswd using RubyGems
           gem install mkpasswd
