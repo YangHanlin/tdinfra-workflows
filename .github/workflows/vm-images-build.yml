@@ -57,7 +57,8 @@ jobs:
             qemu \
             cdrtools \
             coreutils \
-            gomplate
+            gomplate \
+            helm
 
           # Install mkpasswd using RubyGems
           gem install mkpasswd
