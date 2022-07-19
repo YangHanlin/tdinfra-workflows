@@ -69,6 +69,10 @@ jobs:
 
           # Tweaks to make cloud-localds work in macOS environment
           ln -s "$(which mkisofs)" /usr/local/bin/genisoimage
+      - name: Set up Docker Desktop
+        uses: docker-practice/actions-setup-docker@master
+      - name: Set up cache for Docker images
+        uses: satackey/action-docker-layer-caching@v0.0.11
       - name: Build VM images
         run: |
           set -e
