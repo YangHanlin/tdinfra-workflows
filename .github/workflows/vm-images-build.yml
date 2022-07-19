@@ -40,14 +40,14 @@ jobs:
         with:
           name: shared-storage
           path: /Users/runner/shared
-      - name: Set up cache for Packer
+      - name: Set up general cache
         uses: actions/cache@v3
         with:
           path: /Users/runner/.cache
-          key: packer-${{ runner.os }}-${{ hashFiles('**/*.pkr*.hcl') }}
+          key: general-${{ runner.os }}-${{ hashFiles('**/*.pkr*.hcl') }}
           restore-keys: |
-            packer-${{ runner.os }}-
-            packer-
+            general-${{ runner.os }}-
+            general-
       - name: Set up dependencies
         run: |
           set -e
@@ -73,6 +73,7 @@ jobs:
         uses: docker-practice/actions-setup-docker@master
       - name: Set up cache for Docker images
         uses: satackey/action-docker-layer-caching@v0.0.11
+        continue-on-error: true
       - name: Build VM images
         run: |
           set -e
